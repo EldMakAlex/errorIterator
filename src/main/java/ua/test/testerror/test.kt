@@ -6,7 +6,7 @@ import org.json.JSONObject
 
 class Test(val view : MainActivity) {
 
-    fun getJSArray(): JSONArray {
+    private fun getJSArray(): JSONArray {
         val testJS = JSONArray()
         val rowObject1 = JSONObject()
         rowObject1.put("tst1", "12")
@@ -29,9 +29,9 @@ class Test(val view : MainActivity) {
         launchOnUI {
             val result = getJSArray()
 
-            for(row in result.iterator()){
+            for(row in result){
                 val resultString = " ${row.getStrToInt("tst1")}, ${row.getStrToInt("tst2")}, ${row.getBoolean("tst3")}/${row.getDouble("tst4")}"
-                view.test.setText(resultString)
+                view.test.text = resultString
             }
 
         }
